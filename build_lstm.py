@@ -104,6 +104,11 @@ def predict_30_days(df, sc, model, steps, pred_count):
     return [y_test, pred]
 
 #   We're gonna trade only top 200 traded stocks
+def clear_ticker(input):
+    if input.index("/") > 0:
+        return input.split("/")[-1]
+    return input
+
 def get_top_stocks(write_dir):
     top = []
     src_dir = os.path.join(write_dir, fund_data_folder)
@@ -112,6 +117,7 @@ def get_top_stocks(write_dir):
         top_100 = df['Ticker'][:200]
         top = list(top_100)
         break
+    top = [clear_ticker(item) for item in top]
     return top
 
 #   Iterate all the stock files
