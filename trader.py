@@ -1,8 +1,6 @@
-import math
 import pathlib
 import os
 import pandas as pd
-import numpy as np
 from build_lstm import get_top_stocks
 
 training_data_folder = "training_data"
